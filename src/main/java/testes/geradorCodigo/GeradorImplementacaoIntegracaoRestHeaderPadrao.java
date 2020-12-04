@@ -9,8 +9,6 @@ import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.ItfFabricaInt
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.transmissao_recepcao_rest_client.ItfAcaoApiRest;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoHeaderBuilder;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBApiRestClientReflexao;
-import java.util.HashMap;
-import java.util.Map;
 import org.jboss.forge.roaster.model.source.JavaClassSource;
 import org.jboss.forge.roaster.model.source.MethodSource;
 import testesFW.geradorDeCodigo.GeradorClasseGenerico;

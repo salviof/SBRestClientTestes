@@ -37,4 +37,8 @@ public class TestesApiRest {
         geradorheader.salvarEmDiretorioPadraCASO_NAO_EXISTA();
     }
 
+    public void iniciarServicoRecepcaoOauth() {
+        ServicoRecepcaoOauthTestes.iniciarServico();
+    }
+
 }
