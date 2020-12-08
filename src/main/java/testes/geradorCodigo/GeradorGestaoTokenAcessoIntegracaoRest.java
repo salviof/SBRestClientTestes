@@ -6,9 +6,11 @@
 package testes.geradorCodigo;
 
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.ItfFabricaIntegracaoRest;
-import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteRest;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
+
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.servicoRegistrado.InfoConfigRestClientIntegracao;
-import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBApiRestClientReflexao;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBIntegracaoClientReflexao;
+
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.gestaoToken.GestaoTokenChaveUnica;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.gestaoToken.GestaoTokenOath2;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
@@ -26,10 +28,10 @@ import testesFW.geradorDeCodigo.GeradorClasseGenerico;
 public class GeradorGestaoTokenAcessoIntegracaoRest extends GeradorClasseGenerico {
 
     public GeradorGestaoTokenAcessoIntegracaoRest(ItfFabricaIntegracaoRest pIntegracao) {
-        super(UtilSBApiRestClientReflexao.getPacoteImplementacao(pIntegracao), UtilSBApiRestClientReflexao.getNomeClasseImplementacaoGestaoToken(pIntegracao));
+        super(UtilSBIntegracaoClientReflexao.getPacoteImplementacao(pIntegracao), UtilSBIntegracaoClientReflexao.getNomeClasseImplementacaoGestaoToken(pIntegracao));
         //    ERPCodigoPostalBR Class
-        getCodigoJava().addImport(UtilSBApiRestClientReflexao.getClasseAnotacao(pIntegracao));
-        AnnotationSource<JavaClassSource> anotacao = getCodigoJava().addAnnotation(UtilSBApiRestClientReflexao.getClasseAnotacao(pIntegracao));
+        getCodigoJava().addImport(UtilSBIntegracaoClientReflexao.getClasseAnotacao(pIntegracao));
+        AnnotationSource<JavaClassSource> anotacao = getCodigoJava().addAnnotation(UtilSBIntegracaoClientReflexao.getClasseAnotacao(pIntegracao));
         //anotacao.setStringValue("tipo", pIntegracao.toString());
         anotacao.setEnumValue("tipo", (Enum) pIntegracao);
 
@@ -51,7 +53,7 @@ public class GeradorGestaoTokenAcessoIntegracaoRest extends GeradorClasseGeneric
         }
         MethodSource<JavaClassSource> constructor = getCodigoJava().addMethod().setPublic().setConstructor(true);
 
-        constructor.addParameter(FabTipoAgenteClienteRest.class, "pTipoAgente").setFinal(true);
+        constructor.addParameter(FabTipoAgenteClienteApi.class, "pTipoAgente").setFinal(true);
         constructor.addParameter(ItfUsuario.class, "pUsuario").setFinal(true);
         constructor.setBody("super(" + pIntegracao.getClass().getSimpleName() + ".class,pTipoAgente,pUsuario );");
 

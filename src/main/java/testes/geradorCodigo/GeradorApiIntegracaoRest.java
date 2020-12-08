@@ -6,8 +6,7 @@
 package testes.geradorCodigo;
 
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.ItfFabricaIntegracaoRest;
-import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBApiRestClient;
-import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBApiRestClientReflexao;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBIntegracaoClientReflexao;
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -28,7 +27,7 @@ public class GeradorApiIntegracaoRest extends GeradorAnotacaoGenerico {
 
     public GeradorApiIntegracaoRest(ItfFabricaIntegracaoRest pFabricaintegracao) {
 
-        super(UtilSBApiRestClientReflexao.getPacoteApi(pFabricaintegracao), UtilSBApiRestClientReflexao.getNomeClasseAnotacao(pFabricaintegracao));
+        super(UtilSBIntegracaoClientReflexao.getPacoteApi(pFabricaintegracao), UtilSBIntegracaoClientReflexao.getNomeClasseAnotacao(pFabricaintegracao));
         fabricaIntegracao = pFabricaintegracao;
 
         getCodigoJava().addAnnotation(Qualifier.class);

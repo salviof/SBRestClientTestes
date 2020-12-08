@@ -35,6 +35,7 @@ public class ServicoRecepcaoOauthTestes {
                 if (!UtilSBApiRestClient.receberCodigoSolicitacaoOauth(req.raw())) {
                     throw new UnsupportedOperationException("falha recebendo codigo de solictação de token Oauth");
                 }
+
             } catch (Throwable t) {
                 SBCore.RelatarErro(FabErro.SOLICITAR_REPARO, "Erro criando " + t.getMessage(), t);
                 return "FALHOU";
