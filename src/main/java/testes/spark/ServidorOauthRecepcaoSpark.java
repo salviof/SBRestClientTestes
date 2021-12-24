@@ -27,11 +27,11 @@ public class ServidorOauthRecepcaoSpark extends Thread {
         this.porta = porta;
         caminho = pCaminho;
         token = pToken;
+        MapaObjetosProjetoAtual.adcionarObjeto(TipoClienteOauth.class);
     }
 
     @Override
     public void run() {
-        MapaObjetosProjetoAtual.adcionarObjeto(TipoClienteOauth.class);
 
         Spark.port(Integer.valueOf(porta));
 
