@@ -19,7 +19,7 @@ import testes.geradorCodigo.GeradorImplementacaoIntegracaoRestHeaderPadrao;
  */
 public class TestesApiRest {
 
-    public void gerarCodigos(Class<? extends ItfFabricaIntegracaoRest> pIntegrador) {
+    public void gerarCodigosChamadasEndpoint(Class<? extends ItfFabricaIntegracaoRest> pIntegrador) {
 
         for (ItfFabricaIntegracaoRest pFabrica : pIntegrador.getEnumConstants()) {
             gerarCodigo(pFabrica);
