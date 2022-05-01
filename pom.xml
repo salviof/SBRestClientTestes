@@ -45,12 +45,7 @@
             <version>1.0.0-RC-SNAPSHOT</version>
         </dependency>
 
-        <dependency>
-            <groupId>br.org.coletivoJava.fw.integracoes.erp</groupId>
-            <artifactId>intERPRestful</artifactId>
-            <version>1.0.0-RC-SNAPSHOT</version>
-        </dependency>
-
+     
         <dependency>
             <groupId>com.sparkjava</groupId>
             <artifactId>spark-core</artifactId>
@@ -68,7 +63,7 @@
             <artifactId>jersey-client</artifactId>
             <version>1.12</version>
         </dependency>
-        
+
     </dependencies>
 
 

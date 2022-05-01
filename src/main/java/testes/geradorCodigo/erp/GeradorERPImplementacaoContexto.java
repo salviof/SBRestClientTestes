@@ -29,7 +29,7 @@ public class GeradorERPImplementacaoContexto extends GeradorClasseGenerico {
 
     @Override
     public void salvarEmDiretorioPadraoSubstituindoAnterior() {
-        throw new UnsupportedOperationException("A implementação deve ser gerada sem substituicao da classe anterior");
+        throw new UnsupportedOperationException("este método deve ser implementado extendendo " + GeradorERPImplementacaoContexto.class.getSimpleName() + " @Override");
     }
 
 }
