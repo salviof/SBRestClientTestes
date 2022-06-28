@@ -5,7 +5,9 @@
  */
 package testes.testesSupers;
 
+import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.ItfFabricaIntegracaoRest;
+import org.coletivojava.fw.api.tratamentoErros.FabErro;
 import testes.geradorCodigo.GeradorApiIntegracaoRest;
 import testes.geradorCodigo.GeradorGestaoTokenAcessoIntegracaoRest;
 import testes.geradorCodigo.GeradorImplementacaoIntegracaoRest;
@@ -22,7 +24,12 @@ public class TestesApiRest {
     public void gerarCodigosChamadasEndpoint(Class<? extends ItfFabricaIntegracaoRest> pIntegrador) {
 
         for (ItfFabricaIntegracaoRest pFabrica : pIntegrador.getEnumConstants()) {
-            gerarCodigo(pFabrica);
+            try {
+                gerarCodigo(pFabrica);
+            } catch (Throwable y) {
+                System.out.println(y.getMessage());
+                SBCore.RelatarErro(FabErro.SOLICITAR_REPARO, "Erro gerando código", y);
+            }
         }
     }
 
