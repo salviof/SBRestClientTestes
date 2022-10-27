@@ -11,6 +11,7 @@ import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.Ut
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.ItensGenericos.basico.UsuarioAnonimo;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.ItensGenericos.basico.UsuarioSistemaRoot;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.MapaObjetosProjetoAtual;
+import java.util.Map;
 import org.coletivojava.fw.api.tratamentoErros.FabErro;
 import spark.Spark;
 
@@ -31,8 +32,9 @@ public class ServicoRecepcaoOauthTestes {
                 if (req.raw().getRequestURI().contains(UtilSBApiRestClientOauth2.PATH_TESTE_DE_VIDA_SERVICO_RECEPCAO)) {
                     return "OK";
                 }
-
-                if (!UtilSBApiRestClient.receberCodigoSolicitacaoOauth(req.raw())) {
+                Map<String, String[]> parametros = UtilSBApiRestClient.getParametroHttpServletRequestQuery(req.raw());
+                String tipoAplicacao = parametros.get("tipoAplicacao")[0];
+                if (!UtilSBApiRestClient.receberCodigoSolicitacaoOauth(req.raw(), tipoAplicacao)) {
                     throw new UnsupportedOperationException("falha recebendo codigo de solictação de token Oauth");
                 }
 
