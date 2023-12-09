@@ -41,9 +41,9 @@ public class GeradorAPIERP extends GeradorAnotacaoGenerico {
         getCodigoJava().addAnnotation(Documented.class);
         getCodigoJava().addAnnotation(Retention.class).setEnumValue(RetentionPolicy.RUNTIME);
         getCodigoJava().addAnnotation(Target.class).setEnumValue(ElementType.TYPE);
-        if (!SBCore.getGrupoProjeto().equals("erpColetivoJava")) {
-            throw new UnsupportedOperationException("Esta geração deve estar organizada no grupo erpColetivoJava");
-        }
+        // if (!SBCore.getGrupoProjeto().equals("erpColetivoJava")) {
+        //     throw new UnsupportedOperationException("Esta geração deve estar organizada no grupo erpColetivoJava");
+        // }
         fab = pFabrica;
     }
 
