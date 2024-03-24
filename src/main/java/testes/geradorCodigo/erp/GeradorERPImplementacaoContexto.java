@@ -21,7 +21,8 @@ public class GeradorERPImplementacaoContexto extends GeradorClasseGenerico {
         super(UtilSBCoreReflexaoAPIERP.getPacoteImplementacaoERP(pFabrica), UtilSBCoreReflexaoAPIERP.getNomeClasseAnotacaoImplementacao(pFabrica) + "impl");
         getCodigoJava().addImport(ItfServicoLinkDeEntidadesERP.class);
         getCodigoJava().addImport(pFabrica.getClasseImplementacaoPadrao());
-        getCodigoJava().implementInterface(pFabrica.getClasseImplementacaoPadrao());
+        getCodigoJava().addImport(pFabrica.getInterface());
+        getCodigoJava().implementInterface(pFabrica.getInterface());
         getCodigoJava().extendSuperType(RepositorioLinkEntidadesGenerico.class);
         getCodigoJava().addAnnotation(pFabrica.getAnotacao());
 
