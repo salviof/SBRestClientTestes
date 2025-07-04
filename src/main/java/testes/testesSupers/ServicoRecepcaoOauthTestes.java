@@ -6,11 +6,14 @@
 package testes.testesSupers;
 
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJsonRest;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBApiRestClient;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBApiRestClientOauth2;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.ItensGenericos.basico.UsuarioAnonimo;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.ItensGenericos.basico.UsuarioSistemaRoot;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.MapaObjetosProjetoAtual;
+import jakarta.json.JsonValue;
 import java.util.Map;
 import org.coletivojava.fw.api.tratamentoErros.FabErro;
 import spark.Spark;
@@ -30,7 +33,7 @@ public class ServicoRecepcaoOauthTestes {
             try {
 
                 if (req.raw().getRequestURI().contains(UtilSBApiRestClientOauth2.PATH_TESTE_DE_VIDA_SERVICO_RECEPCAO)) {
-                    return "OK";
+                    return UtilSBCoreJson.getTextoByJsonObjeect(UtilSBCoreJsonRest.getRespostaJsonBuilderBaseSucesso("OK", JsonValue.EMPTY_JSON_OBJECT).build());
                 }
                 Map<String, String[]> parametros = UtilSBApiRestClient.getParametroHttpServletRequestQuery(req.raw());
                 String tipoAplicacao = parametros.get("tipoAplicacao")[0];
@@ -40,10 +43,10 @@ public class ServicoRecepcaoOauthTestes {
 
             } catch (Throwable t) {
                 SBCore.RelatarErro(FabErro.SOLICITAR_REPARO, "Erro criando " + t.getMessage(), t);
-                return "FALHOU";
+                return UtilSBCoreJson.getTextoByJsonObjeect(UtilSBCoreJsonRest.getRespostaJsonBuilderBaseFalha("Falhou registrando Token" + t.getMessage()).build());
             }
 
-            return "ok";
+            return UtilSBCoreJson.getTextoByJsonObjeect(UtilSBCoreJsonRest.getRespostaJsonBuilderBaseSucesso("OK", JsonValue.EMPTY_JSON_OBJECT).build());
         });
 
     }
