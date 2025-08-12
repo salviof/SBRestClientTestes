@@ -10,6 +10,7 @@ import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.token.ItfTok
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.TipoClienteOauth;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBApiRestClient;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBApiRestClientOauth2;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.util.UtilSBERPRestFullClient;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.MapaObjetosProjetoAtual;
 import javax.servlet.http.HttpServletRequest;
 import org.coletivojava.fw.api.tratamentoErros.FabErro;
@@ -56,6 +57,7 @@ public class ServidorOauthRecepcaoSpark extends Thread {
                     }
 
                 } catch (Throwable t) {
+                    res.status(401);
                     return "Erro Maluco" + t.getMessage();
                 }
 
@@ -63,9 +65,10 @@ public class ServidorOauthRecepcaoSpark extends Thread {
 
             Spark.get(UtilSBApiRestClientOauth2.PATH_TESTE_DE_VIDA_SERVICO_RECEPCAO, (req, res) -> {
                 try {
-                    return "EUTÔVIVO";
+                    return UtilSBERPRestFullClient.TEXTO_RESPOSTA_WEBSERVICE_RESTFUL_PING_SUCESSO;
 
                 } catch (Throwable t) {
+                    res.status(401);
                     return "Erro Maluco" + t.getMessage();
                 }
 
