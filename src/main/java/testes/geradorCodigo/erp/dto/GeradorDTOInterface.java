@@ -8,17 +8,18 @@ package testes.geradorCodigo.erp.dto;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.erp.dto.ItfDTOSBJSON;
 import com.super_bits.modulosSB.SBCore.modulos.erp.ItfApiErpSuperBits;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfBeanComImagemGrande;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfBeanComImagemMedio;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfBeanComImagemPequena;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfBeanComUploadImagemGrande;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfBeanComUploadImagemPequena;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfBeanComUploadImagensPadrao;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfBeanGenerico;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfBeanGenericoSomenteLeitura;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfBeanInstanciado;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfBeanReflexoes;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfBeanVisualizavel;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoDominioEntidadeGenerico;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoEntidadeReflexivel;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoEntidadeSimplesSomenteLeitura;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoEntidadeSomenteLeituraInstanciado;
+
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoEntidadeVisualizavel;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoTemImagemGrande;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoTemImagemMedio;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoTemImagemPequena;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoTemUploadImagemGrande;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoTemUploadImagemPequena;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoTemUploadImagensPadrao;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -107,19 +108,18 @@ public class GeradorDTOInterface extends GeradorInterfaceGenerico {
     }
 
     private boolean isInterfaceElegivel(Class pInterface) {
-        return (!pInterface.getSimpleName().equals(ItfBeanGenericoSomenteLeitura.class.getSimpleName())
+        return (!pInterface.getSimpleName().equals(ComoEntidadeSomenteLeituraInstanciado.class.getSimpleName())
                 && !pInterface.getSimpleName().equals(Object.class.getSimpleName())
-                && !pInterface.getSimpleName().equals(ItfBeanVisualizavel.class.getSimpleName())
-                && !pInterface.getSimpleName().equals(ItfBeanInstanciado.class.getSimpleName())
-                && !pInterface.getSimpleName().equals(ItfBeanGenerico.class.getSimpleName())
-                && !pInterface.getSimpleName().equals(ItfBeanGenericoSomenteLeitura.class.getSimpleName())
-                && !pInterface.getSimpleName().equals(ItfBeanReflexoes.class.getSimpleName()))
-                && !pInterface.getSimpleName().equals(ItfBeanComUploadImagensPadrao.class.getSimpleName())
-                && !pInterface.getSimpleName().equals(ItfBeanComUploadImagemGrande.class.getSimpleName())
-                && !pInterface.getSimpleName().equals(ItfBeanComImagemGrande.class.getSimpleName())
-                && !pInterface.getSimpleName().equals(ItfBeanComImagemMedio.class.getSimpleName())
-                && !pInterface.getSimpleName().equals(ItfBeanComImagemPequena.class.getSimpleName())
-                && !pInterface.getSimpleName().equals(ItfBeanComUploadImagemPequena.class.getSimpleName());
+                && !pInterface.getSimpleName().equals(ComoEntidadeVisualizavel.class.getSimpleName())
+                && !pInterface.getSimpleName().equals(ComoDominioEntidadeGenerico.class.getSimpleName())
+                && !pInterface.getSimpleName().equals(ComoEntidadeSimplesSomenteLeitura.class.getSimpleName())
+                && !pInterface.getSimpleName().equals(ComoEntidadeReflexivel.class.getSimpleName()))
+                && !pInterface.getSimpleName().equals(ComoTemUploadImagensPadrao.class.getSimpleName())
+                && !pInterface.getSimpleName().equals(ComoTemUploadImagemGrande.class.getSimpleName())
+                && !pInterface.getSimpleName().equals(ComoTemImagemGrande.class.getSimpleName())
+                && !pInterface.getSimpleName().equals(ComoTemImagemMedio.class.getSimpleName())
+                && !pInterface.getSimpleName().equals(ComoTemImagemPequena.class.getSimpleName())
+                && !pInterface.getSimpleName().equals(ComoTemUploadImagemPequena.class.getSimpleName());
 
     }
 

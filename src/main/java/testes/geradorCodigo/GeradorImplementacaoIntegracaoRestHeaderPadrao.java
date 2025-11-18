@@ -5,7 +5,7 @@
  */
 package testes.geradorCodigo;
 
-import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.ItfFabricaIntegracaoRest;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.ComoFabricaIntegracaoRest;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.transmissao_recepcao_rest_client.ItfAcaoApiRest;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.AcaoApiIntegracaoHeaderBuilder;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBIntegracaoClientReflexao;
@@ -22,7 +22,7 @@ import testesFW.geradorDeCodigo.GeradorClasseGenerico;
  */
 public class GeradorImplementacaoIntegracaoRestHeaderPadrao extends GeradorClasseGenerico {
 
-    public GeradorImplementacaoIntegracaoRestHeaderPadrao(ItfFabricaIntegracaoRest pIntegracao) {
+    public GeradorImplementacaoIntegracaoRestHeaderPadrao(ComoFabricaIntegracaoRest pIntegracao) {
         super(UtilSBIntegracaoClientReflexao.getPacoteImplementacao(pIntegracao), UtilSBIntegracaoClientReflexao.getNomeClasseImplementacaoGestaoHeaderPadrao(pIntegracao));
         //    ERPCodigoPostalBR Class
         getCodigoJava().setSuperType(AcaoApiIntegracaoHeaderBuilder.class);

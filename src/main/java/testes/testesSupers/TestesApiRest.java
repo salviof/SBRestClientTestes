@@ -6,7 +6,7 @@
 package testes.testesSupers;
 
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.ItfFabricaIntegracaoRest;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.ComoFabricaIntegracaoRest;
 import org.coletivojava.fw.api.tratamentoErros.FabErro;
 import testes.geradorCodigo.GeradorApiIntegracaoRest;
 import testes.geradorCodigo.GeradorGestaoTokenAcessoIntegracaoRest;
@@ -21,9 +21,9 @@ import testes.geradorCodigo.GeradorImplementacaoIntegracaoRestHeaderPadrao;
  */
 public class TestesApiRest {
 
-    public void gerarCodigosChamadasEndpoint(Class<? extends ItfFabricaIntegracaoRest> pIntegrador) {
+    public void gerarCodigosChamadasEndpoint(Class<? extends ComoFabricaIntegracaoRest> pIntegrador) {
 
-        for (ItfFabricaIntegracaoRest pFabrica : pIntegrador.getEnumConstants()) {
+        for (ComoFabricaIntegracaoRest pFabrica : pIntegrador.getEnumConstants()) {
             try {
                 gerarCodigo(pFabrica);
             } catch (Throwable y) {
@@ -33,7 +33,7 @@ public class TestesApiRest {
         }
     }
 
-    public void gerarCodigo(ItfFabricaIntegracaoRest pEndpoint) {
+    public void gerarCodigo(ComoFabricaIntegracaoRest pEndpoint) {
         GeradorApiIntegracaoRest gerador = new GeradorApiIntegracaoRest(pEndpoint);
         gerador.salvarEmDiretorioPadraoSubstituindoAnterior();
         GeradorImplementacaoIntegracaoRest geradorImp = new GeradorImplementacaoIntegracaoRest(pEndpoint);

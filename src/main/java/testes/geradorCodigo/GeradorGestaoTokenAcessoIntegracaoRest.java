@@ -5,7 +5,7 @@
  */
 package testes.geradorCodigo;
 
-import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.ItfFabricaIntegracaoRest;
+import com.super_bits.modulosSB.SBCore.integracao.libRestClient.WS.ComoFabricaIntegracaoRest;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.FabTipoAgenteClienteApi;
 
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.servicoRegistrado.InfoConfigRestClientIntegracao;
@@ -13,7 +13,7 @@ import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.Ut
 
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.gestaoToken.GestaoTokenChaveUnica;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.gestaoToken.GestaoTokenOath2;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfUsuario;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoUsuario;
 import org.jboss.forge.roaster.model.source.AnnotationSource;
 import org.jboss.forge.roaster.model.source.JavaClassSource;
 import org.jboss.forge.roaster.model.source.MethodSource;
@@ -27,7 +27,7 @@ import testesFW.geradorDeCodigo.GeradorClasseGenerico;
  */
 public class GeradorGestaoTokenAcessoIntegracaoRest extends GeradorClasseGenerico {
 
-    public GeradorGestaoTokenAcessoIntegracaoRest(ItfFabricaIntegracaoRest pIntegracao) {
+    public GeradorGestaoTokenAcessoIntegracaoRest(ComoFabricaIntegracaoRest pIntegracao) {
         super(UtilSBIntegracaoClientReflexao.getPacoteImplementacao(pIntegracao), UtilSBIntegracaoClientReflexao.getNomeClasseImplementacaoGestaoToken(pIntegracao));
         //    ERPCodigoPostalBR Class
         getCodigoJava().addImport(UtilSBIntegracaoClientReflexao.getClasseAnotacao(pIntegracao));
@@ -54,7 +54,7 @@ public class GeradorGestaoTokenAcessoIntegracaoRest extends GeradorClasseGeneric
         MethodSource<JavaClassSource> constructor = getCodigoJava().addMethod().setPublic().setConstructor(true);
 
         constructor.addParameter(FabTipoAgenteClienteApi.class, "pTipoAgente").setFinal(true);
-        constructor.addParameter(ItfUsuario.class, "pUsuario").setFinal(true);
+        constructor.addParameter(ComoUsuario.class, "pUsuario").setFinal(true);
         constructor.setBody("super(" + pIntegracao.getClass().getSimpleName() + ".class,pTipoAgente,pUsuario );");
 
     }
