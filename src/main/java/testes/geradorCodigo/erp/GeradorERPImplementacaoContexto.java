@@ -7,7 +7,7 @@ package testes.geradorCodigo.erp;
 
 import com.super_bits.modulosSB.SBCore.modulos.erp.ItfApiErpSuperBits;
 import com.super_bits.modulosSB.SBCore.modulos.erp.ItfServicoLinkDeEntidadesERP;
-import org.coletivojava.fw.utilCoreBase.UtilSBCoreReflexaoAPIERP;
+import org.coletivojava.fw.utilCoreBase.UtilCRCReflexaoAPIERP;
 import testesFW.geradorDeCodigo.GeradorClasseGenerico;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.erp.repositorioLinkEntidades.RepositorioLinkEntidadesGenerico;
 
@@ -18,7 +18,7 @@ import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.erp.reposito
 public class GeradorERPImplementacaoContexto extends GeradorClasseGenerico {
 
     public GeradorERPImplementacaoContexto(ItfApiErpSuperBits pFabrica) {
-        super(UtilSBCoreReflexaoAPIERP.getPacoteImplementacaoERP(pFabrica), UtilSBCoreReflexaoAPIERP.getNomeClasseAnotacaoImplementacao(pFabrica) + "impl");
+        super(UtilCRCReflexaoAPIERP.getPacoteImplementacaoERP(pFabrica), UtilCRCReflexaoAPIERP.getNomeClasseAnotacaoImplementacao(pFabrica) + "impl");
         getCodigoJava().addImport(ItfServicoLinkDeEntidadesERP.class);
         getCodigoJava().addImport(pFabrica.getClasseImplementacaoPadrao());
         getCodigoJava().addImport(pFabrica.getInterface());

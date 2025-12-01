@@ -6,7 +6,7 @@
 package testes.geradorCodigo.erp;
 
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringFiltros;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCStringFiltros;
 import com.super_bits.modulosSB.SBCore.modulos.erp.InfoReferenciaApiErp;
 import com.super_bits.modulosSB.SBCore.modulos.erp.ItfApiErpSuperBits;
 import java.lang.annotation.Documented;
@@ -15,7 +15,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import javax.inject.Qualifier;
-import org.coletivojava.fw.utilCoreBase.UtilSBCoreReflexaoAPIERP;
+import org.coletivojava.fw.utilCoreBase.UtilCRCReflexaoAPIERP;
 import testesFW.geradorDeCodigo.GeradorAnotacaoGenerico;
 
 /**
@@ -32,7 +32,7 @@ public class GeradorAPIERP extends GeradorAnotacaoGenerico {
     }
 
     public GeradorAPIERP(ItfApiErpSuperBits pFabrica, String pSlug) {
-        super(UtilSBCoreReflexaoAPIERP.getPacoteApiClasseAnotacao(pFabrica), UtilSBCoreReflexaoAPIERP.getNomeClasseAnotacaoImplementacao(pFabrica) + UtilSBCoreStringFiltros.getNuloEmEmpty(pSlug));
+        super(UtilCRCReflexaoAPIERP.getPacoteApiClasseAnotacao(pFabrica), UtilCRCReflexaoAPIERP.getNomeClasseAnotacaoImplementacao(pFabrica) + UtilCRCStringFiltros.getNuloEmEmpty(pSlug));
         getCodigoJava().addAnnotation(Qualifier.class);
         getCodigoJava().addImport(pFabrica.getInterface());
         getCodigoJava().addImport(InfoReferenciaApiErp.class);

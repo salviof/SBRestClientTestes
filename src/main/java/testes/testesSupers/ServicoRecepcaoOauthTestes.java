@@ -6,8 +6,8 @@
 package testes.testesSupers;
 
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJson;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreJsonRest;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJson;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCJsonRest;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBApiRestClient;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.implementacao.UtilSBApiRestClientOauth2;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.ItensGenericos.basico.UsuarioAnonimo;
@@ -33,7 +33,7 @@ public class ServicoRecepcaoOauthTestes {
             try {
 
                 if (req.raw().getRequestURI().contains(UtilSBApiRestClientOauth2.PATH_TESTE_DE_VIDA_SERVICO_RECEPCAO)) {
-                    return UtilSBCoreJson.getTextoByJsonObjeect(UtilSBCoreJsonRest.getRespostaJsonBuilderBaseSucesso("OK", JsonValue.EMPTY_JSON_OBJECT).build());
+                    return UtilCRCJson.getTextoByJsonObjeect(UtilCRCJsonRest.getRespostaJsonBuilderBaseSucesso("OK", JsonValue.EMPTY_JSON_OBJECT).build());
                 }
                 Map<String, String[]> parametros = UtilSBApiRestClient.getParametroHttpServletRequestQuery(req.raw());
                 String tipoAplicacao = parametros.get("tipoAplicacao")[0];
@@ -43,10 +43,10 @@ public class ServicoRecepcaoOauthTestes {
 
             } catch (Throwable t) {
                 SBCore.RelatarErro(FabErro.SOLICITAR_REPARO, "Erro criando " + t.getMessage(), t);
-                return UtilSBCoreJson.getTextoByJsonObjeect(UtilSBCoreJsonRest.getRespostaJsonBuilderBaseFalha("Falhou registrando Token" + t.getMessage()).build());
+                return UtilCRCJson.getTextoByJsonObjeect(UtilCRCJsonRest.getRespostaJsonBuilderBaseFalha("Falhou registrando Token" + t.getMessage()).build());
             }
 
-            return UtilSBCoreJson.getTextoByJsonObjeect(UtilSBCoreJsonRest.getRespostaJsonBuilderBaseSucesso("OK", JsonValue.EMPTY_JSON_OBJECT).build());
+            return UtilCRCJson.getTextoByJsonObjeect(UtilCRCJsonRest.getRespostaJsonBuilderBaseSucesso("OK", JsonValue.EMPTY_JSON_OBJECT).build());
         });
 
     }

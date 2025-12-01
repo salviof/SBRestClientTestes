@@ -8,7 +8,7 @@ package testes.geradorCodigo.erp.dto;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.erp.dto.DTO_SBGENERICO;
 import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.erp.dto.DTO_SB_JSON_PROCESSADOR_GENERICO;
 import com.super_bits.modulosSB.SBCore.modulos.erp.ItfApiErpSuperBits;
-import org.coletivojava.fw.utilCoreBase.UtilSBCoreReflexaoAPIERP;
+import org.coletivojava.fw.utilCoreBase.UtilCRCReflexaoAPIERP;
 import testesFW.geradorDeCodigo.GeradorClasseGenerico;
 
 /**
@@ -18,13 +18,13 @@ import testesFW.geradorDeCodigo.GeradorClasseGenerico;
 public class GeradorDTOProcessador extends GeradorClasseGenerico {
 
     public GeradorDTOProcessador(ItfApiErpSuperBits pFabrica, Class pInterfacePojo) {
-        super(UtilSBCoreReflexaoAPIERP.getPacoteApiDTO(pFabrica, pInterfacePojo), UtilSBCoreReflexaoAPIERP.getNomeDTOProcessClassePojo(pInterfacePojo));
-        String dtoBind = UtilSBCoreReflexaoAPIERP.getPacoteApiDTO(pFabrica, pInterfacePojo) + "." + UtilSBCoreReflexaoAPIERP.getNomeDTOClassePojo(pInterfacePojo);
+        super(UtilCRCReflexaoAPIERP.getPacoteApiDTO(pFabrica, pInterfacePojo), UtilCRCReflexaoAPIERP.getNomeDTOProcessClassePojo(pInterfacePojo));
+        String dtoBind = UtilCRCReflexaoAPIERP.getPacoteApiDTO(pFabrica, pInterfacePojo) + "." + UtilCRCReflexaoAPIERP.getNomeDTOClassePojo(pInterfacePojo);
         getCodigoJava().addImport(DTO_SB_JSON_PROCESSADOR_GENERICO.class);
         getCodigoJava().addImport(dtoBind);
-        getCodigoJava().setSuperType(DTO_SB_JSON_PROCESSADOR_GENERICO.class.getSimpleName() + "<" + UtilSBCoreReflexaoAPIERP.getNomeDTOClassePojo(pInterfacePojo) + ">");
-        String metodoConsturcotor = "public " + UtilSBCoreReflexaoAPIERP.getNomeDTOProcessClassePojo(pInterfacePojo) + "(){\n "
-                + "super(" + UtilSBCoreReflexaoAPIERP.getNomeDTOClassePojo(pInterfacePojo) + ".class); \n }";
+        getCodigoJava().setSuperType(DTO_SB_JSON_PROCESSADOR_GENERICO.class.getSimpleName() + "<" + UtilCRCReflexaoAPIERP.getNomeDTOClassePojo(pInterfacePojo) + ">");
+        String metodoConsturcotor = "public " + UtilCRCReflexaoAPIERP.getNomeDTOProcessClassePojo(pInterfacePojo) + "(){\n "
+                + "super(" + UtilCRCReflexaoAPIERP.getNomeDTOClassePojo(pInterfacePojo) + ".class); \n }";
         System.out.println(metodoConsturcotor);
         getCodigoJava().addMethod(metodoConsturcotor).setConstructor(true);
 

@@ -24,7 +24,7 @@ import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basic
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
-import org.coletivojava.fw.utilCoreBase.UtilSBCoreReflexaoAPIERP;
+import org.coletivojava.fw.utilCoreBase.UtilCRCReflexaoAPIERP;
 import testesFW.geradorDeCodigo.GeradorInterfaceGenerico;
 
 /**
@@ -39,13 +39,13 @@ public class GeradorDTOInterface extends GeradorInterfaceGenerico {
      * @param interfacePojo
      */
     public GeradorDTOInterface(ItfApiErpSuperBits pFabrica, Class interfacePojo) {
-        super(UtilSBCoreReflexaoAPIERP.getPacoteApiDTO(pFabrica, interfacePojo), UtilSBCoreReflexaoAPIERP.getNomeDTOInterface(interfacePojo));
+        super(UtilCRCReflexaoAPIERP.getPacoteApiDTO(pFabrica, interfacePojo), UtilCRCReflexaoAPIERP.getNomeDTOInterface(interfacePojo));
         getCodigoJava().addImport(ItfDTOSBJSON.class);
         getCodigoJava().addImport(interfacePojo);
         //@JsonDeserialize(using = JsonProcessAssinaturaDTO.class)
         getCodigoJava().addImport(JsonDeserialize.class);
-        getCodigoJava().addImport(UtilSBCoreReflexaoAPIERP.getPacoteApiDTO(pFabrica, interfacePojo) + "." + UtilSBCoreReflexaoAPIERP.getNomeDTOProcessClassePojo(interfacePojo));
-        getCodigoJava().addAnnotation(JsonDeserialize.class).setLiteralValue("using", UtilSBCoreReflexaoAPIERP.getNomeDTOProcessClassePojo(interfacePojo) + ".class");
+        getCodigoJava().addImport(UtilCRCReflexaoAPIERP.getPacoteApiDTO(pFabrica, interfacePojo) + "." + UtilCRCReflexaoAPIERP.getNomeDTOProcessClassePojo(interfacePojo));
+        getCodigoJava().addAnnotation(JsonDeserialize.class).setLiteralValue("using", UtilCRCReflexaoAPIERP.getNomeDTOProcessClassePojo(interfacePojo) + ".class");
         getCodigoJava().addInterface(ItfDTOSBJSON.class.getSimpleName());
         getCodigoJava().addInterface(interfacePojo.getSimpleName());
 
