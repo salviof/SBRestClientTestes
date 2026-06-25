@@ -6,8 +6,9 @@
 package testes.geradorCodigo.erp.dto;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.super_bits.modulosSB.SBCore.integracao.libRestClient.api.erp.dto.ItfDTOSBJSON;
+
 import com.super_bits.modulosSB.SBCore.modulos.erp.ItfApiErpSuperBits;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.dto.ComoDTOCaramelo;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.entidade.basico.ComoDominioEntidadeGenerico;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.entidade.basico.ComoEntidadeReflexivel;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.entidade.basico.ComoEntidadeSimplesSomenteLeitura;
@@ -40,13 +41,13 @@ public class GeradorDTOInterface extends GeradorInterfaceGenerico {
      */
     public GeradorDTOInterface(ItfApiErpSuperBits pFabrica, Class interfacePojo) {
         super(UtilCRCReflexaoAPIERP.getPacoteApiDTO(pFabrica, interfacePojo), UtilCRCReflexaoAPIERP.getNomeDTOInterface(interfacePojo));
-        getCodigoJava().addImport(ItfDTOSBJSON.class);
+        getCodigoJava().addImport(ComoDTOCaramelo.class);
         getCodigoJava().addImport(interfacePojo);
         //@JsonDeserialize(using = JsonProcessAssinaturaDTO.class)
         getCodigoJava().addImport(JsonDeserialize.class);
         getCodigoJava().addImport(UtilCRCReflexaoAPIERP.getPacoteApiDTO(pFabrica, interfacePojo) + "." + UtilCRCReflexaoAPIERP.getNomeDTOProcessClassePojo(interfacePojo));
         getCodigoJava().addAnnotation(JsonDeserialize.class).setLiteralValue("using", UtilCRCReflexaoAPIERP.getNomeDTOProcessClassePojo(interfacePojo) + ".class");
-        getCodigoJava().addInterface(ItfDTOSBJSON.class.getSimpleName());
+        getCodigoJava().addInterface(ComoDTOCaramelo.class.getSimpleName());
         getCodigoJava().addInterface(interfacePojo.getSimpleName());
 
         List<Method> metodosGetDeclarados = getMetodosRecursivo(interfacePojo, new ArrayList<>());
